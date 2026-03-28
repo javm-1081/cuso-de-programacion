@@ -6,21 +6,41 @@ decision1 = input("Qué eliges decides hacer? Batear, Tocar la bola o Esperar? >
 if decision1 == "batear":
     #nivel 2 Ruta de batear
     print("El lanzador tira una recta adentro a 100 mph.")
-    decision2 = input("Qué haces? batear o esperar ?" ).lower()
+    decision2 = input("Qué haces? batear o esperar?" ).lower()
 
-    if decision2 == "batear":
-        print(input)("Das un batazo al jardín derecho, llegas a la primera base pero ves que el jardinero todavía está lejos de la pelota. Qué haces? correr o quedarte").lower()
-        decision3 = input("¿Qué haces? QUEDARTE en primera, CORRER a segunda o ESPERAR fuera de la base").strip().lower()
-        
-        if decision3 == "correr":
-         decision4 = print("Llegas a segunda base.Intentas ROBAR la tercera o prefieres ESPERAR? ")
-         
-         if decision4 = "robar":
-             decision 5 = input("Llegas a 3ra pero el bateador da un batazo de línea por donde estas tú")
-              
+    if decision2 == "batear" or decision2 == "bateo":
+      print("Das un batazo al jardín derecho, llegas a la primera base pero ves que el jardinero todavía está lejos de la pelota.")
+      decision3 = (input)("Qué haces? correr o quedarte ").strip().lower()
+   
+      if decision3 == "correr" or decision3 == "corro":
+        decision4 = input("Llegas a segunda base. Intentas Robar la tercera o prefieres Esperar? ")
 
-    if decision2 == ("aguantar"):
+        if decision4 == "robar":
+            print("Llegas a 3ra pero el bateador da un batazo de línea por donde estas tú.")
+            decision5 = input("Qué haces? Seguir o Regresar a 2da base?")
+
+            if decision5 == "seguir":
+                print("El 3ra base no atrapó la bola y seguiste hacia home plate, pero el jardinero lanza la bola a home y llega al mismo tiempo que tú.")
+                decision6 = input("Qué haces? Saltar, Deslizarte o Chocar ")
+            
+                if decision6 == "Deslizarte" or decision6 == "Deslizarme":
+                    print("Safe, anotaste y tu equipo ganó")
+                
+                elif decision6 == "Chocar":
+                        print("El receptor aguantó el choque, estás fuera")
+            
+            elif decision5 == "Regresar":
+                "Te hicieron out en segunda, tu equipo perdió"
+
+        elif decision4 == "Esperar" or decision4 == "Espero":
+          print("Te quedaste esperando y el siguiente bateador se ponchó. Se acabó el juego.")
+
+      elif decision3 ==  "quedarte" or decision3 == "quedarme":
+        print("Te aseguraste en primera, pero el siguiente bateador falló. Tu equipo perdió")
+
+    elif decision2 == "aguantar":
         print("Strike, estás fuera, tu equipo perdió")
-       
+
+      
 
 
