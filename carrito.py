@@ -1,61 +1,84 @@
-print("\nBienvenido al simulador de la cesta de compra")
+# Listas para almacenar la informacion
+productos = []
+precios = []
 
-cesta_productos = []
-cesta_precios = []
-opcion = ""
+print("\nBienvenido al Simulador de Cesta de Compra")
 
-while opcion != "renunciar":
-    print("\n--- MENU DE LA CESTA ---")
+# Bucle principal del programa
+continuar = True
+while continuar:
+    # Mostrar el menu
+    print("\n" + "="*30)
+    print("   MENÚ DE LA CESTA")
+    print("="*30)
     print("1. AGREGAR un nuevo elemento")
-    print("2. MOSTRAR el contenido de la cesta")
+    print("2. MOSTRAR la cesta")
     print("3. ELIMINAR un elemento")
-    print("4. CALCULAR el total de la compra")
-    print("5. RENUNCIAR")
-    
-    opcion = input("\nQué eliges hacer? ").lower()
+    print("4. CALCULAR el total")
+    print("5. RENUNCIAR / Salir")
+    print("="*30)
 
-    if opcion == "agregar" or opcion == "1":
-        nuevo_producto = input("\nQué producto quieres agregar? ").lower()
-        precio_producto = float(input("\nCuál es el precio de " + nuevo_producto + "? "))
+    opcion = input("\nElige una opción (1-5): ").strip()
+
+    if opcion == "1":
+        print("\n--- Agregar Nuevo Artículo ---")
+        nombre = input("\nIntroduce el nombre del artículo: ").strip()
+        precio_input = input("\nIntroduce el precio de " + nombre + ": ").strip()
         
-        cesta_productos.append(nuevo_producto)
-        cesta_precios.append(precio_producto)
-        print("\nHas agregado " + nuevo_producto + " a la cesta.")
+        # Conversion directa a decimal
+        precio_num = float(precio_input)
+        productos.append(nombre)
+        precios.append(precio_num)
+        print("\n" + nombre + " se ha añadido a la cesta.")
 
-    elif opcion == "mostrar" or opcion == "2":
-        print("\nContenido de tu cesta:")
-        if len(cesta_productos) == 0:
-            print("\nLa cesta está vacía.")
+    elif opcion == "2":
+        print("\n--- Contenido de tu Cesta ---")
+        if len(productos) == 0:
+            print("\nTu cesta está vacía.")
         else:
-            for i in range(len(cesta_productos)):
-                print(str(i + 1) + ". " + cesta_productos[i] + " - $" + str(cesta_precios[i]))
+            # Recorrer las listas usando el indice para mantener la sincronizacion
+            for i in range(len(productos)):
+                print(str(i + 1) + ". " + productos[i] + " - $" + str(precios[i]))
+        print("\n-----------------------------")
 
-    elif opcion == "eliminar" or opcion == "3":
-        if len(cesta_productos) == 0:
+    elif opcion == "3":
+        print("\n--- Eliminar Artículo ---")
+        if len(productos) == 0:
             print("\nNo hay nada que eliminar.")
         else:
-            print("\nLista actual:")
-            for i in range(len(cesta_productos)):
-                print(str(i + 1) + ". " + cesta_productos[i])
+            # Mostrar la lista para que el usuario sepa que numero elegir
+            for i in range(len(productos)):
+                print(str(i + 1) + ". " + productos[i])
             
-            indice_eliminar = int(input("\nQué número de elemento quieres eliminar? ")) - 1
+            indice_input = input("\nIntroduce el número del artículo que quieres eliminar: ").strip()
             
-            if indice_eliminar >= 0 and indice_eliminar < len(cesta_productos):
-                eliminado = cesta_productos.pop(indice_eliminar)
-                cesta_precios.pop(indice_eliminar)
-                print("\nHas eliminado " + eliminado + " de la cesta.")
+            # Convertir el texto a numero entero para el indice
+            indice = int(indice_input) - 1
+            
+            if 0 <= indice < len(productos):
+                eliminado = productos.pop(indice)
+                precios.pop(indice)
+                print("\n" + eliminado + " ha sido eliminado de la cesta.")
             else:
-                print("\nEse número no es válido.")
+                print("\nError: El número no está en la lista.")
 
-    elif opcion == "calcular" or opcion == "4":
-        total = 0
-        for precio in cesta_precios:
-            total = total + precio
-        print("\nEl total de tu compra es: $" + str(total))
+    elif opcion == "4":
+        print("\n--- Total de la Compra ---")
+        if len(precios) == 0:
+            print("\nEl total es $0.00")
+        else:
+            total = 0
+            for p in precios:
+                total = total + p
+            print("\nEl total de tu compra es: $" + str(total))
+        print("\n--------------------------")
 
-    elif opcion == "renunciar" or opcion == "5":
-        print("\nGracias por usar el simulador. Hasta luego.")
-        opcion = "renunciar"
+    elif opcion == "5":
+        print("\nGracias por usar el simulador. Hasta pronto.")
+        continuar = False
 
     else:
-        print("\nEsa no es una respuesta válida.")
+        print("\nOpción no válida. Por favor elige un número del 1 al 5.")
+
+    if continuar:
+        input("\nPresiona Enter para continuar...")
