@@ -1,0 +1,42 @@
+#ejercicio 1
+número = int(input("Introduzca un número: "))
+
+número_resultado = número % 2
+
+if número_resultado == 1:
+    print("Tu número es impar")
+
+elif número_resultado == 0:
+    print("Tu número es par")
+
+#ejercicio 2
+
+numero_1 = int(input("Introduzca el primer número: "))
+numero_2 = int(input("Introduzca el 2do número: "))
+
+mayor = numero_1 > numero_2
+menor = numero_1 < numero_2
+
+if mayor:
+    print(f"{numero_1} es mayor que {numero_2}")
+
+elif menor:
+    print(f"{numero_1} es menor que {numero_2}")
+
+else:
+    print("Ambos números son iguales")
+
+#ejercicio 3
+
+edad= int(input("Introduzca su edad: "))
+
+if edad == 18:
+    print("Tienes 18 años")
+
+elif edad > 18:
+    print("Eres mayor de edad")
+
+elif edad <18 and edad >= 0:
+    print("Eres menor de edad")
+
+#ejercicio 4 
