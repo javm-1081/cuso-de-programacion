@@ -124,7 +124,6 @@ agenda = {}
 
 def mostrarcontactos():
     print("\nNombre" + "Número de contacto")
-    print("-"* 35)
     for nombre, numero in agenda.items():
         print("{nombre}{numero}")
     
