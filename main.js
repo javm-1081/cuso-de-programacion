@@ -18,3 +18,24 @@ tabs.forEach(tab => {
         tab.classList.add('skills__active')
     })
 })
+
+const linkWork = document.querySelectorAll('.work__item')
+
+function activeWork() {
+    linkWork.forEach(l=> l.classList.remove('active-work'))
+    this.classList.add('active-work')
+}
+
+linkWork.forEach(l=> l.addEventListener("click", activeWork))
+
+document.addEventListener("click", (e) => {
+    if(e.target.classList.contains("work__button")) {
+        togglePortfolioPopup();
+    }
+})
+
+function togglePortfolioPopup() {
+    document.querySelector(".portfolio__popup").classList.toggle("open");
+}
+
+document.querySelector(".portfolio__popup-close").addEventListener("click", togglePortfolioPopup)
